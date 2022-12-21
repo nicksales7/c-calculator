@@ -3,13 +3,9 @@
 #include <string.h>
 
 void input();
-
 void addFunction();
-
 void subFunction();
-
 void divFunction();
-
 void multFunction();
 
 int main() {
@@ -17,7 +13,7 @@ int main() {
     return 0;
 }
 
-void input() {
+void input(){
     char operator[20];
     char *addition = "+";
     char *subtraction = "-";
@@ -27,35 +23,24 @@ void input() {
     printf("Which operator would you like to use? (+, -, /, *): ");
     scanf("%s", operator);
 
-    int result = strcmp(operator, addition);
+    int addResult = strcmp(operator,addition);
+    int subResult = strcmp(operator,subtraction);
+    int divResult = strcmp(operator,division);
+    int multResult = strcmp(operator,multiplication);
 
-    switch (result) {
-        case 0:
-            addFunction();
-            break;
-        default:
-            result = strcmp(operator, subtraction);
-            switch (result) {
-                case 0:
-                    subFunction();
-                    break;
-                default:
-                    result = strcmp(operator, division);
-                    switch (result) {
-                        case 0:
-                            divFunction();
-                            break;
-                        default:
-                            result = strcmp(operator, multiplication);
-                            switch (result) {
-                                case 0:
-                                    multFunction();
-                                    break;
-                                default:
-                                    printf("That is not an operator.");
-                            }
-                    }
-            }
+    if (addResult == 0)
+        addFunction();
+    else if (subResult == 0){
+        subFunction();
+    }
+    else if (divResult == 0){
+        divFunction();
+    }
+    else if (multResult == 0){
+        multFunction();
+    }
+    else{
+        printf("That is not an operator.");
     }
 }
 
